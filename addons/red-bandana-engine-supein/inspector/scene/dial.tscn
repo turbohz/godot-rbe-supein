@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/red-bandana-engine-supein/inspector/scene/dial.gd" type="Script" id=1]
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Control
+
+tool
+
+signal value_changed
+
+func get_value()->float: return $dial.ratio
+func set_value(v): $dial.ratio = v
+"
+
+[sub_resource type="StyleBoxFlat" id=3]
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[node name="root" type="AspectRatioContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -844.0
+margin_bottom = -540.0
+rect_min_size = Vector2( 60, 60 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment_vertical = 0
+script = SubResource( 4 )
+
+[node name="dial" type="Panel" parent="."]
+unique_name_in_owner = true
+margin_left = 60.0
+margin_right = 120.0
+margin_bottom = 60.0
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 1 )
